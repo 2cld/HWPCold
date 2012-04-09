@@ -1,0 +1,60 @@
+http://bytes.com/topic/access/answers/527963-sql-query-lookup-values-table-into-multiple-fields
+
+Table 1 - Sales
+Products | Option A | Option B | Option C
+--------------------------------------------------------------------
+Item 1 | 200 | 400 | 300
+Item 2 | 100 | 300 | 500
+Item 3 | 200 | 300 | 100
+Table 2 - Equip
+ID | NAME
+-------------------
+100 | Door
+200 | Bell
+300 | Crank
+400 | Speaker
+500 | Tire
+I would like to make a query to output the following:
+Products | Option A | Option B | Option C
+--------------------------------------------------------------------
+Item 1 | Bell | Speaker | Crank
+Item 2 | Door | Crank | Tire
+Item 3 | Bell | Crank | Door
+
+SELECT Sales.Products, Equip.NAME AS [Option A], Equip_1.NAME AS [Option B], Equip_2.NAME AS [Option C]
+FROM ( (Sales INNER JOIN Equip                  ON Sales.[Option A] = Equip.ID)
+                    INNER JOIN Equip AS Equip_1  ON Sales.[Option B] = Equip_1.ID)
+                    INNER JOIN Equip AS Equip_2  ON Sales.[Option C] = Equip_2.ID;
+		    
+======= SO my stuff ====
+Table 1 - Tickets
+TicketID | RouteID | Contact | SerLocID
+--------------------------------------------------------------------
+1 | 1 | 1 | 2
+Table 2 - Customers
+ID | NAME
+-------------------
+1 | Chris
+2 | Alan
+Want
+TicketView
+Table 1 - Tickets
+TicketID | RouteID | Contact | SerLocID
+--------------------------------------------------------------------
+1 | 1 | Chris | Alan
+
+SELECT Tickets.TicketID,
+
+SELECT TOP 4 Tickets.TicketID,(Customers.Name AS [ContactName]) FROM Tickets INNER JOIN Customers ON Tickets.Contact = Customer.ID WHERE RouteID=1; 
+
+$SQL  = "SELECT DISTINCT D.TicketID, D.RouteID, D.SerTypeID, D.SerLocID, D.BillToID, D.Contact";
+$SQL .= ", D1.Name AS [ContName], D1.Phone AS [ContPhone]";
+$SQL .= ", D2.Name AS [BTName], D2.Address AS [BTAddr], D2.City AS [BTCity], D2.State AS [BTState], D2.Zip AS [BTZip]";
+$SQL .= ", D3.Name AS [SLName], D3.Address AS [SLAddr], D3.City AS [SLCity], D3.State AS [SLState], D3.Zip AS [SLZip]";
+$SQL .= ", D.Date AS [TicketDate], D.PrevBal, D.SerFee, D.Tax";
+$SQL .= ", D.Note1, D.Note2, D.Note3, D.Rem1, D.Rem2, D.Rem3";
+$SQL .= " FROM \"Tickets.DB\" D, \"Customers.DB\" D1, \"Customers.DB\" D2,\"Customers.DB\" D3";
+$SQL .= " WHERE ((((D.RouteID = ".$RouteID.") AND (D1.CustID = D.Contact)) AND (D2.CustID = D.BillToID)) AND (D3.CustID = D.SerLocID)) ORDER BY D.TicketID ";
+
+
+

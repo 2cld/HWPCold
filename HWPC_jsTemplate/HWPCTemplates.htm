@@ -1,0 +1,180 @@
+﻿<html>
+<head>
+<title>HWPC MVC Sample Application</title>
+<script src="trimpath-template-1.0.38.js" type="text/javascript"></script>
+<script type="text/javascript">
+var myphotos;
+function  jsonHWPC(data)
+{ 
+    var result = TrimPath.processDOMTemplate("hwpctemplate", data);
+    document.getElementById("showphoto").innerHTML = result;
+}
+
+function btnSearch_onclick() 
+{
+    var tags = document.getElementById("txtTags").value;
+    var flickrURL = "HWPCDATA.json";
+    var container = document.getElementById("srcDiv");
+    var el = document.createElement("script");
+    el.setAttribute("src",flickrURL);
+    container.appendChild(el);
+}
+var ctr =0;
+</script>
+<style type="text/css">
+<!--
+ .imgitem {margin:5px; padding:2px; margin-bottom:10px; height:400px; width:400px; background-color :#f0f0f0; float:left;}
+ .imgdiv {width:400px; height:300px; overflow:hidden; border:solid 1px gray; border-radius:1px; }
+ .content {width:200px; height:20px; overflow:hidden}
+ -->
+ 
+ <!-- Begin HWPC Template css -->
+<!-- #HWPC_Ticket {width:1010px; height:800px; overflow:hidden; margin:2px; border:5px solid orange; padding:5px;} -->
+#HWPC_Ticket {width:1010px; height:400px; margin:2px; border:5px solid orange; padding:5px;}
+#HWPC_TicketL {float:left; height:400px; width:705px; border:3px solid red; padding:5px;}
+#HWPC_TicketR {float:right; height:400px; width:250px; border:3px solid pink; padding:5px;}
+<!-- #HWPC_TicketL_TicketID {float:left; width:150px; height:170px; overflow:hidden;  margin:0px; border:1px solid pink; padding:0px;} -->
+#HWPC_TicketL_TicketID {float:left; width:150px; height:160px;  margin:0px; border:1px solid pink; padding:0px;}
+#HWPC_TicketL_Icon {width:150px;}
+<!-- #HWPC_TicketL_Parties {width:550px; height:170px; overflow:hidden;  margin:0px; border:1px solid lightgrey; padding:0px;} -->
+#HWPC_TicketL_Parties {width:550px; height:160px;  margin:0px; border:1px solid lightgrey; padding:0px;}
+#HWPC_Address {margin-left:auto; margin-right:auto; width:520px; height:40px; border:1px blue solid; padding-left:5px;}
+#HWPC_AdrSrv {color:#FF6969; float: left;  width:48%; border:1px blue solid; padding-left:0px;}
+#HWPC_AdrBill {color:#6969FF; float: right; width:48%; border:1px green solid; padding-left:0px;} 
+<!-- #HWPC_AdrData {color:#696969; border:1px pink solid;} -->
+#HWPC_TicketL_Service {width:100%; height:60px; overflow:hidden;  margin:0px; border:1px solid yellow; padding:3px;}
+#HWPC_TicketL_Details {width:100%; height:140px; overflow:hidden;  margin:0px; border:3px solid black; padding:3px;}
+#HWPC_TicketR_DateTime {float:right; right:0px; width:100%; height:60px; overflow:hidden;  margin:0px; border:1px solid lightgrey; padding:0px;}
+#HWPC_TicketR_RouteID {float:right; right:0px; top:40px; width:100%; height:100px; overflow:hidden;  margin:0px; border:1px solid red; padding:0px;}
+#HWPC_TicketR_FeeStatus {float:right; width:100%; height:150px; overflow:hidden;  margin:0px; border:5px solid black; padding:0px;}
+
+.hwpcaddrleft {float: left;}
+.hwpcaddrright {float: right;}
+.hwpclic {position:absolute; left:400px;}
+
+.hwpcservicetitle {background-color:#FFFFFF; z-index:1; position:relative; top:0px; left:0px; margin:0px; padding:0px;}
+.hwpcNotetitle{background-color:#FFFFFF; z-index:1; position:relative; top:78px; right:60px; margin:0px; padding:0px;}
+
+h1 {margin:0px; text-align:center; font-weight: bold; font-size: 20;}
+td {width:25%;}
+td.gridw1 {width:25%;}
+td.gridw2 {width:12%;}
+td.gridw3 {width:13%;}
+#HWPC_TableGrid {float:right; position:relative; bottom:-60px; width:400px; overflow:hidden; border-collapse:collapse; border-width: 1px;}
+tr.gridstatus {height:40px;}
+td.gridstatus {width:80px; text-align:center;}
+td.gridpaid {width:100px; text-align:center;}
+td.gridcharge {width:100px; text-align:center;}
+#HWPC_TableDate {width: 100%; border-collapse: collapse; border-width: 1px;}
+tr.griddate {height: 20px;}
+td.griddate {width: 50%; text-align: center;}
+#HWPC_TableFee {float: right; width: 100%; ont-weight: bold; font-size: 20; border-collapse: collapse; border-width: 1px; padding: 10px;}
+tr.gridfee {}
+td.gridfee1 {text-align: right;}
+td.gridfee2 {text-align: right; padding: 5px;}
+ <!-- End HWPC Template css -->
+
+</style> 
+</head>
+<body>
+<p>This application uses <a href="http://localhost/jstemplate">http://localhost/jstemplate</a> to get JSON data and images.</p>
+<p>This passes text to the calling function.
+<input id="txtTags" type="text" /><input id="btnSearch" type="button" 
+  value="Show Template" onclick="return btnSearch_onclick()" /><br /></p><hr />
+
+<!--DIV serves as container to script tags !-->
+<div id="srcDiv"></div>
+
+<!-- HWPC template code starts -->
+<textarea id="hwpctemplate" style="display:none">
+<h1>${title}</h1>
+
+{for i in items}
+	<div id="HWPC_Ticket" >
+		<div id="HWPC_TicketL" >
+			<div id="HWPC_TicketL_Top" >
+				<div id="HWPC_TicketL_TicketID">
+					<img id="HWPC_Ticket_Icon" src="Hawk.jpg" alt="HWPC Hawk" />
+					<span>Ticket ID: ${i.TicketID}</span><br/>
+					<span>Invoice #: -none-</span>
+				</div>
+				<div id="HWPC_TicketL_Parties">
+					<h1>Hawkeye West Pest Control</h1>
+					<div id="HWPC_Address">
+						<span class="hwpcaddrleft">1795 Park Circle</span>
+						<span class="hwpcaddrright">515-532-3499</span><br/>
+						<span class="hwpcaddrleft">Clarion, Iowa  50525</span>
+						<span class="hwpclic">Lic # 023 18-000</span>
+						<span class="hwpcaddrright">800-467-5231</span>
+					</div>
+					<div id="HWPC_AdrSrv">
+						<span>Service Location:</span>
+						<div id="HWPC_AdrData">
+							<span>${i.SLName}</span><br/>
+							<span>${i.SLAddr}</span><br/>
+							<span>${i.SLCity}, ${i.SLState} ${i.SLZip}</span>
+						</div>
+					</div>
+					<div id="HWPC_AdrBill">
+					<span>Bill To:</span>
+						<div id="HWPC_AdrData">
+							<span>${i.BTName}</span><br/>
+							<span>${i.BTAddr}</span><br/>
+							<span>${i.BTCity}, ${i.BTState} ${i.BTZip}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="HWPC_TicketL_Bot">
+				<span class="hwpcservicetitle">Type of Service:  ${i.ServDesc}</span>
+				<span class="hwpcNotetitle">NOTES:</span>
+				<div id="HWPC_TicketL_Service" >
+					<span class="hwpcservicetext">${i.Note1}</br>${i.Note2}</br>${i.Note3}</span>
+				</div>
+				<div id="HWPC_TicketL_Details" >
+					<table id="HWPC_TableGrid" border="1" >
+						<tr class="gridstatus"><td></td><td class="gridw1"></td><td class="gridw2"></td><td class="gridw2"></td><td class="gridw3"></td><td class="gridw3"></td></tr>
+						<tr class="gridstatus"><td></td><td class="gridw1"></td><td class="gridw2"></td><td class="gridw2"></td><td class="gridw3"></td><td class="gridw3"></td></tr>
+					</table>
+					<span class="hwpcservicetext">${i.Rem1}</br>${i.Rem2}</br>${i.Rem3}</span>
+				</div>
+			</div>
+		</div>
+		<div id="HWPC_TicketR" >
+			<div id="HWPC_TicketR_DateTime" >Date:
+				<table id="HWPC_TableDate" border="1" >
+					<tr><td class="griddate">${i.Total}Test</td><td class="griddate">${i.SerFee}Time</td></tr>
+				</table>
+			</div>
+			<div id="HWPC_TicketR_RouteID" >
+				<table>
+					<tr><td>Route ID:</td><td>${i.RouteID}</td></tr>
+					<tr><td>Contact:</td><td>${i.ContName}</td></tr>
+					<tr><td>Phone:</td><td>${i.ContPhone}</td></tr>
+				</table>
+			</div>
+			<div id="HWPC_TicketR_FeeStatus">Ticket Fee Status
+				<table id="HWPC_TableFee">
+					<tr class="gridfee"><td class="gridfee1">Previous Bal:</td><td class="gridfee2">${i.PrevBal}</td></tr>
+					<tr class="gridfee"><td class="gridfee1">Service Fee:</td><td class="gridfee2">${i.SerFee}</td></tr>
+					<tr class="gridfee"><td class="gridfee1">${i.TaxRate}% Tax:</td><td class="gridfee2">${i.Tax}</td></tr>
+					<tr class="gridfee"><td class="gridfee1">Total:</td><td class="gridfee2">${i.Total}</td></tr>
+				</table>
+			</div>
+			<table>
+				<tr class="gridstatus"><td class="gridstatus">STATUS:</td><td class="gridpaid">PAID</td><td class="gridcharge">CHARGE</td></tr>
+			</table>
+		</div>
+	</div>
+	</div>
+{/for}
+</textarea>
+<!-- HWPC template code ends -->
+
+<!--Container for HTML generated after binding to the template-->
+Below is the template generation.<hr />
+<div id="showphoto" style="font-family:Calibri"></div>
+
+
+</body>
+</html>

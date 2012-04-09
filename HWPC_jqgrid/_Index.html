@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CAT jquery jqgrid Test code using ODBC:CTSTEST table:Employees</title>
+  
+<link rel="stylesheet" type="text/css" media="screen" href="themes/redmond/jquery-ui-1.7.1.custom.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="themes/ui.jqgrid.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="themes/ui.multiselect.css" />
+<style>
+html, body {
+	margin: 0;			/* Remove body margin/padding */
+	padding: 0;
+	overflow: hidden;	/* Remove scroll bars on browser window */	
+    font-size: 100%;
+}
+/*Splitter style */
+
+
+#LeftPane {
+	/* optional, initial splitbar position */
+	overflow: auto;
+}
+/*
+ * Right-side element of the splitter.
+*/
+
+#RightPane {
+	padding: 2px;
+	overflow: auto;
+}
+.ui-tabs-nav li {position: relative;}
+.ui-tabs-selected a span {padding-right: 10px;}
+.ui-tabs-close {display: none;position: absolute;top: 3px;right: 0px;z-index: 800;width: 16px;height: 14px;font-size: 10px; font-style: normal;cursor: pointer;}
+.ui-tabs-selected .ui-tabs-close {display: block;}
+.ui-layout-west .ui-jqgrid tr.jqgrow td { border-bottom: 0px none;}
+.ui-datepicker {z-index:1200;}
+</style>
+
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/jquery-ui-1.7.1.custom.min.js" type="text/javascript"></script>
+<script src="js/jquery.layout.js" type="text/javascript"></script>
+<script src="js/i18n/grid.locale-en.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$.jgrid.no_legacy_api = true;
+	$.jgrid.useJSON = true;
+</script>
+<script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
+<script src="js/jquery.tablednd.js" type="text/javascript"></script>
+<script src="js/jquery.contextmenu.js" type="text/javascript"></script>
+<script src="js/ui.multiselect.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+jQuery(document).ready(function(){});
+</script>
+</head>
+<body>
+<h1>CAT JSONP Test code using ODBC:CTSTEST table:Employees</h1>
+
+<table id="rowed3"></table> 
+<div id="prowed3"></div> 
+<br /> <script src="rowedex3.js" type="text/javascript"> </script>
+
+</br></br> Here is where I was running this test.
+<a href="http://test.cat9.com/jquery/jqgrid_CAT/Index.html"> http://test.cat9.com/jquery/jqgrid_CAT/Index.html </a>
+</br>This requires the following:
+<ul>
+<li>Index.html - This file</li>
+<li>server.php - The PHP script used to access CTSTEST db via ODBC</li>
+<li>dbconfig.php - The PHP script used to configure access CTSTEST db via ODBC</li>
+<ul><li>Access to ODBC is through mySQL</li><li>Uses griddemo database in mySQL/griddemo</li>
+</ul>
+<li>rowedex3.js - The javascript file used to call the jqgrid stuff</li>
+<li>js folder - All the jqgrid and jquery javascript files used</li>
+<li>themes folder - The jquery themes standards stuff</li>
+<li>CTSTEST named ODBC connection to the Paradox db directory C:\0_work\CTS_Data</li>
+<ul><li>Access to ODBC is through mySQL</li></ul>
+<li>Web Server.  I'm using EasyPHP in "C:\Program Files\EasyPHP-5.3.2\EasyPHP-5.3.2.exe"</li>
+</ul>
+</br>This is how I got here:
+<ol>
+<li><input type="checkbox" name="step1" value="done" checked>Started with http://test.cat9.com/jquery/jqgrid_demo36/jqgrid.html</li>
+<li><input type="checkbox" name="step2" value="done" checked>Pulled just rowedex3.js and created http://test.cat9.com/jquery/jqgrid_CAT/Index.html</li>
+<li><input type="checkbox" name="step3" value="done" checked>Noted this works, but uses MySQL PHP calls and the griddemo db</li>
+<li><input type="checkbox" name="step4" value="done" checked>Study jqgrid wiki <a href="http://www.trirand.com/jqgridwiki/doku.php?id=wiki:jqgriddocs"> http://www.trirand.com/jqgridwiki/doku.php?id=wiki:jqgriddocs</a></li>
+<li><input type="checkbox" name="step5" value="done" checked>Get a grid view via ODBC access <a href="http://test.cat9.com/jquery/jqgrid_CAT/testodbc.html"> http://test.cat9.com/jquery/jqgrid_CAT/testodbc.html</a></li>
+<li><input type="checkbox" name="step6" value="done" checked>Get a grid edit via ODBC access <a href="http://test.cat9.com/jquery/jqgrid_CAT/testedit.html"> http://test.cat9.com/jquery/jqgrid_CAT/testedit.html</a></li>
+<li><input type="checkbox" name="step7" value="done">Setup Dump DB commands</li>
+<li><input type="checkbox" name="step8" value="done">Setup files for JSON or XML data transfer</li>
+<li><input type="checkbox" name="step9" value="done">Setup files for ODBC or MySQL</li>
+</ol>
+</body>
+</html>

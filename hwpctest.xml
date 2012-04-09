@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<html:html xmlns:html='http://www.w3.org/TR/xhtml1/'>
+<html:body>
+<html:p>Welcome to HWPC</html:p>
+</html:body>
+
+<hwpc:body xmlns:hwpc='http://hwpc.horseoff.org/hwpcxml'>
+<hwpc:TicketID>1001</hwpc:TicketID>
+</hwpc:body>
+
+</html:html>

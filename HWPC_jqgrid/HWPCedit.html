@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CAT HWPC ODBC php connect to HWPC db</title>
+ 
+<link rel="stylesheet" type="text/css" media="screen" href="themes/redmond/jquery-ui-1.7.1.custom.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="themes/ui.jqgrid.css" />
+ 
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 90%;
+}
+</style>
+ 
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/i18n/grid.locale-en.js" type="text/javascript"></script>
+<script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
+ 
+<script type="text/javascript">
+/*
+$.jgrid = { 
+	defaults : {
+		recordtext: "View {0} - {1} of {2}",
+	        emptyrecords: "No records to view",
+		loadtext: "Loading...",
+		pgtext : "Page {0} of {1}",
+		height : 400
+	}
+};
+*/
+jQuery(document).ready(function(){ 
+	var lastSel;
+	jQuery("#list").jqGrid({
+		height:400,
+		url:'HWPCodbc.php',
+		datatype: 'xml',
+		mtype: 'GET',
+		colNames:['TicketID','Invoice','Date','PrevBal','Tax','Total','SerFee','Active'],
+		colModel :[ 
+			{name:'TicketID', index:'TicketID', width:55}, 
+			{name:'Invoice', index:'Invoice', width:90}, 
+			{name:'Date', index:'Date', width:80, align:'right', editable:true}, 
+			{name:'PrevBal', index:'PrevBal', width:80, align:'right', editable:true}, 
+			{name:'Tax', index:'Tax', width:80, align:'right', editable:true}, 
+			{name:'Total', index:'Total', width:150, sortable:false, editable:true},
+			{name:'SerFee', index:'SerFee', width:80, align:'right', editable:true},
+			{name:'Active', index:'Active', width:80, align:'right', editable:true}
+		],
+		pager: '#pager',
+		rowNum:-1,
+//		rowList:[10,20,30],
+		sortname: 'TicketID',
+		sortorder: 'desc',
+		viewrecords: true,
+		onSelectRow: function(id){
+			if(id && id!==lastSel){ 
+				jQuery('#list').restoreRow(lastSel); 
+				jQuery('#list').editRow(id, true); 	
+				lastSel=id;
+			}
+		},
+		editurl: 'HWPCedit.php',
+		caption: 'HWPC Tickets'
+	}); 
+}); 
+</script>
+ 
+</head>
+<body>
+<table id="list"></table> 
+<div id="pager"></div> 
+<HR WIDTH="95%" COLOR="#6699FF"  SIZE="6">
+<div id="CAT_Steps">
+Here is where I was running this test.<br>
+<a href="http://test.cat9.com/jquery/jqgrid_CAT/HWPCedit.html"> http://test.cat9.com/jquery/jqgrid_CAT/HWPCedit.html </a>
+<br>This requires the following:
+<ul>
+<li>HWPCedit.html - This file</li>
+<li>HWPCodbc.php a copy of testodbc.php - The PHP script used to access READ HWPC db via ODBC php commands</li>
+<li>HWPCedit.php a copy of testedit.php - The PHP script used to access WRITE HWPC db via ODBC php commands</li>
+<li>js folder - All the jqgrid and jquery javascript files used</li>
+<li>themes folder - The jquery themes standards stuff</li>
+<li>HWPC db in C:\0_work\HWPC_old\Data</li>
+<li>HWPC ODBC connection</li>
+<li>EasyPHP 5.3.2</li>
+</ul>
+This is how I got here:
+<ol>
+<li><input type="checkbox" name="step0" value="done" checked>THE BEGINING PARENT
+	<br> The PARENT begins here: <a href="http://test.cat9.com/jquery/jqgrid_CAT/Index.html"> http://test.cat9.com/jquery/jqgrid_CAT/Index.html </a>
+	<br> Then created <a href="http://test.cat9.com/jquery/jqgrid_CAT/testodbc.html"> http://test.cat9.com/jquery/jqgrid_CAT/testodbc.html</a> to use odbc instead of mysql
+	<br> Then created <a href="http://test.cat9.com/jquery/jqgrid_CAT/testedit.html"> http://test.cat9.com/jquery/jqgrid_CAT/testedit.html</a> to use odbc calls to edit the db
+	<br> Then created <a href="http://test.cat9.com/jquery/jqgrid_CAT/HWPCedit.html"> http://test.cat9.com/jquery/jqgrid_CAT/HWPCedit.html</a> to edit the HWPC db via odbc
+	</li>
+<li><input type="checkbox" name="step1" value="done" checked>Copy 
+	<br>C:\Program Files\EasyPHP-5.3.2\www\jquery\jqgrid_CAT\testedit.html to C:\Program Files\EasyPHP-5.3.2\www\jquery\jqgrid_CAT\HWPCedit.html
+	<br>C:\Program Files\EasyPHP-5.3.2\www\jquery\jqgrid_CAT\testodbc.php to C:\Program Files\EasyPHP-5.3.2\www\jquery\jqgrid_CAT\HWPCodbc.php
+	<br>C:\Program Files\EasyPHP-5.3.2\www\jquery\jqgrid_CAT\testedit.php to C:\Program Files\EasyPHP-5.3.2\www\jquery\jqgrid_CAT\HWPCedit.php
+	</li>
+<li><input type="checkbox" name="step1" value="done" checked>Create ODBC connection to HWPC db in C:\0_work\HWPC_old\Data
+	</li>
+<li><input type="checkbox" name="step2" value="done" checked>Modify HTML and PHP to access structure of HWPC db
+	<br>Add ODBC connection label of HWPC to C:\0_work\HWPC_old\Data
+	<br>Modify HWPCedit.html to use HWPCodbc.php forURL and an editurl of: "HWPCedit.php",
+	<br>Modify HWPCodbc.php and HWPCedit.html to use HWPC db structure.
+	<br>Needed to align the table names in all three files... I'm sure there is a better way to generate this.
+	<br>Added the row list back in to get paging back.
+	<br>Look at http://stackoverflow.com/questions/137021/php-object-as-xml-document and just use json??
+	<br>Look at grid options http://www.trirand.com/jqgridwiki/doku.php?id=wiki:options
+	<br>Set height:400
+	<br>Load all the data by setting rowNum:-1,
+	</li>
+<li><input type="checkbox" name="step3" value="done" checked>Debug
+	<br>Need to turn on error stuff in PHP to find what was going on. 
+	<br>One error was I had a . for a , in line 29 ,'Tax'.'Total',
+	<br>Then it spewed out lots of complaints about not declaring all the labels... so I turned PHP errors off again
+	<br>Heck-fire... it works... but lots of lables tp put in... want to adjust the table areas also...
+	<br>Humm... might need to do a join to pull in the names... I'm going to have to think about this now...
+	<br>Probably need to link the HWPC db structual wiki page to continue as we've achived the goal to edit the HWPC db table
+	<br>May want to look at other output structures and such as JSON.... maybe even use the link reference structure for edit redirection.
+	<br>Need to go through and set up edit as it's not tested yet.
+	</li>
+</ol>
+</div>
+</body>
+</html>

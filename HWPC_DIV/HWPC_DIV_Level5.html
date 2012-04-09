@@ -1,0 +1,80 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="hwpcticket.css" />
+<style type="text/css">
+#HWPC_Ticket {width:1010px; height:400px; overflow:hidden; margin:2px; border:5px solid orange; padding:5px}
+#HWPC_Ticket_TicketID {float:left; width:150px; height:170px; overflow:hidden;  margin:0px; border:1px solid pink; padding:0px}
+#HWPC_Ticket_Parties {width:550px; height:170px; overflow:hidden;  margin:0px; border:1px solid lightgrey; padding:0px}
+#HWPC_Address {margin-left:auto; margin-right:auto; width:520px; height:40px; border:1px blue solid; padding-left:5px;}
+#HWPC_AdrSrv {color:#696969; float: left;  width:50%; border:1px blue solid; padding-left:0px;}
+#HWPC_AdrBill {color:#696969; float: right; width:49%; border:1px blue solid; padding-left:0px;}
+#HWPC_AdrData {color:#696969; float: left; width:100%; border:1px blue solid; padding-bottom:0px;}
+
+h1 {margin:0px; text-align:center; font-weight:bold;}
+</style>
+</head>
+<body>
+<div id="XMLHolder'" >  </div> 
+<LINK href="XMLDisplay.css" type="text/css" rel="stylesheet"> 
+<script type="text/javascript" src="XMLDisplay.js"></script> 
+<script>LoadXML('XMLHolder','test.xml'); </script>
+HELLO
+
+	<div id="HWPC_Ticket" >
+		<div style="float:left;">
+		<div id="HWPC_Ticket_TicketID">
+			<img src="Hawk.jpg" alt="HWPC Hawk" style="width:150px;"/>
+			<span>Ticket ID: 000000000</span><br/>
+			<span>Invoice #: 000000000</span>
+		</div>
+		<div id="HWPC_Ticket_Parties">
+			<h1>Hawkeye West Pest Control</h1>
+			<div id="HWPC_Address">
+			<span style="float: left;">1795 Park Circle</span>
+			<span style="position:absolute; left:400px;">Lic # 023 18-000</span>
+			<span style="float: right">515-532-3499</span><br/>
+			<span style="float: left;">Clarion, Iowa  50525</span>
+			<span style="float: right;">800-467-5231</span>
+			</div>
+			<div id="HWPC_AdrSrv">
+			<span>Service Location:</span>
+			<div id="HWPC_AdrData">
+			<span>Service Name:</span><br/>
+			<span>Service Address:</span><br/>
+			<span>Service City State:</span>
+			</div>
+			</div>
+			<div id="HWPC_AdrBill">
+			<span>Bill To:</span>
+			<div id="HWPC_AdrData">
+			<span>Bill To Name:</span><br/>
+			<span>Bill To Address:</span><br/>
+			<span>Bill To City State:</span>
+			</div>
+			</div>
+		</div>
+		<span style="background-color:#FFFFFF; z-index:1; position:relative; top:0px; left:0px; margin:0px; padding:0px;">Type of Service:</span>
+		<span style="background-color:#FFFFFF; z-index:1; position:relative; top:70px; right:60px; margin:0px; padding:0px;">NOTES:</span>
+		<div id="HWPC_Ticket_Service" style="width:700px; height:60px; overflow:hidden;  margin:0px; border:1px solid blue; padding:0px">
+			HWPC_Ticket_Service
+		</div>
+		<div id="HWPC_Ticket_Details" style="width:700px; height:140px; overflow:hidden;  margin:0px; border:3px solid black; padding:0px">
+		<table border="1" style="float:right; position:relative; bottom:-60px; width:400px; overflow:hidden; border-collapse:collapse; border-width: 1px;">
+		<tr style="height:40px;"><td style="width:25%;"></td><td style="width:25%;"></td><td style="width:12%;"></td><td style="width:12%;"></td><td style="width:13%;"></td><td style="width:13%;"></td></tr>
+		<tr style="height:40px;"><td style="width:25%;"></td><td style="width:25%;"></td><td style="width:12%;"></td><td style="width:12%;"></td><td style="width:13%;"></td><td style="width:13%;"></td></tr>
+		</table>
+		</div>
+		</div>
+		<div id="HWPC_Ticket_DateTime" style="float:right; right:0px; width:300px; height:60px; overflow:hidden;  margin:0px; border:1px solid lightgrey; padding:0px">
+			Ticket DateTime
+		</div>
+		<div id="HWPC_Ticket_RouteID" style="float:right; right:0px; top:40px; width:300px; height:100px; overflow:hidden;  margin:0px; border:1px solid red; padding:0px">
+			Ticket Route ID
+		</div>
+		<div id="HWPC_Ticket_FeeStatus" style="float:right; width:300px; height:200px; overflow:hidden;  margin:0px; border:1px solid yellow; padding:0px">
+			Ticket Fee Status
+		</div>
+		<table><tr><td style="width:80px; text-align:center;">STATUS:</td><td style="width:100px; text-align:center;">PAID</td><td style="width:100px; text-align:center;">CHARGE</td></tr></table>
+	</div>
+</body>
+</html>

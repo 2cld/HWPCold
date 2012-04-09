@@ -1,0 +1,123 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="hwpcticket.css" />
+<style type="text/css">
+</style>
+</head>
+<body>
+<img src="HWPC_Delphi_Layout.JPG" style="border:0px" /></br>
+<ul>HWPC Ticket Layout
+<li>DBText1 = Tickets.TicketID</li>
+<li>DBText2 = Tickets.SerLocID</li>
+<li>DBText3 = Tickets.BillToID</li>
+<li>DBText4 = Tickets.RouteID</li>
+<li>DBText5 = Tickets.SerTypeID</li>
+<li>DBText6 = Tickets.ContName</li>
+<li>DBText7 = Tickets.ContPhone</li>
+<li>DBText8 = Tickets.BTName</li>
+<li>DBText9 = Tickets.BTAddr</li>
+<li>DBText10 = Tickets.BTCity</li>
+<li>DBText11 = Tickets.BTState</li>
+<li>DBText12 = Tickets.BTZip</li>
+<li>DBText13 = Tickets.SLName</li>
+<li>DBText14 = Tickets.SLAddr</li>
+<li>DBText15 = Tickets.SLCity</li>
+<li>DBText16 = Tickets.SLState</li>
+<li>DBText17 = Tickets.SLZip</li>
+<li>DBText18 = Tickets.ServDesc</li>
+<li>DBText19 = Tickets.Comment</li>
+<li>DBText20 = Tickets.PrevBal</li>
+<li>DBText21 = Tickets.SerFee</li>
+<li>DBText22 = Tickets.Tax</li>
+<li>DBText23 = Tickets.Total</li>
+<li>DBText24 = Tickets.Note1</li>
+<li>DBText25 = Tickets.Note2</li>
+<li>DBText26 = Tickets.Note3</li>
+<li>DBText27 = Tickets.Rem1</li>
+<li>DBText28 = Tickets.Rem2</li>
+<li>DBText29 = Tickets.Rem3</li>
+<li>DBText30 = Tickets.TaxRate</li>
+</ul>
+<img src="HWPC_Program_TicketPreview.JPG" style="border:0px" /></br>
+<img src="HWPC_Program_TicketView.JPG" style="border:0px" /></br>
+<img src="HWPC_Program_CustomerDB.JPG" style="border:0px" /></br>
+<img src="HWPC_Program_TicketDB.JPG" style="border:0px" /></br>
+HWPC Database structure
+<ul>Tables in the HWPC Database
+<li>Tickets.DB<ul>
+	<li>TicketID</li>
+	<li>Invoice</li>
+	<li>Date</li>
+	<li>PrevBal</li>
+	<li>Tax</li>
+	<li>Total</li>
+	<li>SerFee</li>
+	<li>Active</li>
+	<li>RouteID</li>
+	<li>SerLocID</li>
+	<li>BillToID</li>
+	<li>Contact</li>
+	<li>TaxCode</li>
+	<li>SerTypeID</li>
+	<li>ConStart</li>
+	<li>Comment</li>
+	<li>Rem1</li>
+	<li>Rem2</li>
+	<li>Rem3</li>
+	<li>Note1</li>
+	<li>Note2</li>
+	<li>Note3</li>
+</li></ul>
+<li>Invoices.DB<ul>
+	<li>Invoice</li>
+	<li>Date</li>
+	<li>RouteID</li>
+	<li>SerLocID</li>
+	<li>BillToID</li>
+	<li>TaxCode</li>
+	<li>SerTypeID</li>
+	<li>PrevBal</li>
+	<li>SerFee</li>
+	<li>Tax</li>
+	<li>Total</li>
+	<li>MEMO</li>
+</li></ul>
+<li>Customers.DB</li><ul>
+	<li>CustID</li>
+	<li>Name</li>
+	<li>Last</li>
+	<li>First</li>
+	<li>Address</li>
+	<li>City</li>
+	<li>State</li>
+	<li>Zip</li>
+	<li>Phone1</li>
+	<li>Note</li>
+</li></ul>
+<li>CustBalance.DB</li><ul>
+	<li>CustomerID</li>
+	<li>CustomerName</li>
+	<li>ImportBalance</li>
+	<li>ImportDate</li>
+	<li>Note</li>
+</li></ul>
+<li>ServiceTypes.DB</li><ul>
+	<li>ServTypeID</li>
+	<li>Description</li>
+	<li>Price</li>
+</li></ul>
+<li>TaxRate.DB</li><ul>
+	<li>FedCOde</li>
+	<li>Description</li>
+	<li>TaxRate</li>
+	<li>HWPCode</li>
+</li></ul>
+<li>ZipCode.DB</li><ul>
+	<li>Zip</li>
+	<li>City</li>
+	<li>State</li>
+	<li>FedCoCode</li>
+</li></ul>
+</ul>
+</body>
+</html>

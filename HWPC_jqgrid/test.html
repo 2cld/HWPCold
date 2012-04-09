@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>My Test Grid</title>
+ 
+<link rel="stylesheet" type="text/css" media="screen" href="themes/redmond/jquery-ui-1.7.1.custom.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="themes/ui.jqgrid.css" />
+ 
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 90%;
+}
+</style>
+ 
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/i18n/grid.locale-en.js" type="text/javascript"></script>
+<script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
+ 
+<script type="text/javascript">
+jQuery(document).ready(function(){ 
+  jQuery("#list").jqGrid({
+    url:'testget.php',
+    datatype: 'xml',
+    mtype: 'GET',
+    colNames:['ID','Date', 'Amount','Tax','Total','Notes'],
+    colModel :[ 
+      {name:'id', index:'id', width:55}, 
+      {name:'invdate', index:'invdate', width:90}, 
+      {name:'amount', index:'amount', width:80, align:'right'}, 
+      {name:'tax', index:'tax', width:80, align:'right'}, 
+      {name:'total', index:'total', width:80, align:'right'}, 
+      {name:'note', index:'note', width:150, sortable:false} 
+    ],
+    pager: '#pager',
+    rowNum:10,
+//    rowList:[10,20,30],
+    sortname: 'id',
+    sortorder: 'desc',
+    viewrecords: true,
+    caption: 'My Test grid'
+  }); 
+}); 
+</script>
+ 
+</head>
+<body>
+<table id="list"></table> 
+<div id="pager"></div> 
+<HR WIDTH="95%" COLOR="#6699FF"  SIZE="6">
+<div id="CAT_Steps">
+Here is where I was running this test.<br>
+<a href="http://test.cat9.com/jquery/jqgrid_CAT/Test.html"> http://test.cat9.com/jquery/jqgrid_CAT/Test.html </a>
+<br>This requires the following:
+<ul>
+<li>test.html - This file</li>
+<li>testget.php - The PHP script used to access griddemo db via MySQL php commands</li>
+<li>dbconfig.php - The PHP script used to configure access griddemo db via MySQL php commands</li>
+<li>js folder - All the jqgrid and jquery javascript files used</li>
+<li>themes folder - The jquery themes standards stuff</li>
+<li>griddemo db in C:\Program Files\EasyPHP-5.3.2\mysql\data\griddemo</li>
+<li>EasyPHP 5.3.2</li>
+</ul>
+This is how I got here:
+<ol>
+<li><input type="checkbox" name="step1" value="done" checked>Study jqgrid wiki <a href="http://www.trirand.com/jqgridwiki/doku.php?id=wiki:jqgriddocs"> http://www.trirand.com/jqgridwiki/doku.php?id=wiki:jqgriddocs</a></li>
+<li><input type="checkbox" name="step2" value="done" checked>Use the example <a href="http://www.trirand.com/jqgridwiki/doku.php?id=wiki:first_grid"> http://www.trirand.com/jqgridwiki/doku.php?id=wiki:first_grid</a></li>
+<li><input type="checkbox" name="step3" value="done" checked>Mod the jquery souce links local js/jquery.js then started to fix errors that showed up</li>
+<li><input type="checkbox" name="step4" value="done" checked>The debug: <br>Need to turn on error stuff in PHP to find what was going on. <br>I needed to Mod invid in HTML and testget.php to id as no invid in the tabel it was id.<br>Also turned off warning errors in testget.php cause as it confuses the jqgrid</li>
+<li><input type="checkbox" name="step5" value="done" checked>Messed with some of the output just to see things</li>
+</ol>
+</div>
+</body>
+</html>
